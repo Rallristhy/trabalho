@@ -1,0 +1,32 @@
+{
+  "estabalecimentos": [
+    {
+      "id": "1",
+      "nome": "TV Morena",
+      "coord": {
+        "lat": -20.4791101,
+        "lon": -54.6028666
+      },
+      "end": {
+        "bairro": "Jardim TV Morena",
+        "rua": "Avenida Eduardo Elias Zahran",
+        "numero": 1600,
+        "cep": "79004-001"
+      }
+    },
+    {
+      "id": "1",
+      "nome": "TV Morena",
+      "coord": {
+        "lat": -20.4791101,
+        "lon": -54.6028666
+      },
+      "end": {
+        "bairro": "Jardim TV Morena",
+        "rua": "Avenida Eduardo Elias Zahran",
+        "numero": 1600,
+        "cep": "79004-001"
+      }
+    }
+  ]
+}
