@@ -15,16 +15,16 @@
   },
   {
     "id": "2",
-    "nome": "TV Morena2",
+    "nome": "Pão Moreno",
     "coord": {
-      "lat": -20.4791101,
-      "lon": -54.6028666
+      "lat": -20.478790,
+      "lon": -54.599307
     },
     "end": {
-      "bairro": "Jardim TV Morena2",
-      "rua": "Avenida Eduardo Elias Zahran2",
-      "numero": 1602,
-      "cep": "79004-002"
+      "bairro": "Jardim TV Morena",
+      "rua": "Avenida Eduardo Elias Zahran",
+      "numero": 1668,
+      "cep": "79051-000"
     }
   }
 ]

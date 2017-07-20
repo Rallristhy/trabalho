@@ -36,11 +36,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void recebeJson(String s){
         Gson gson = new Gson();
-        Log.d("R4LL", s);
-
+        //Log.d("R4LL", s);
         //Estabelecimentos e = gson.fromJson(s, Estabelecimentos.class);
 
-        Estabelecimentos[] arr = gson.fromJson(s, Estabelecimentos[].class);
+        Estabelecimentos[] estabelecimentoses = gson.fromJson(s, Estabelecimentos[].class);
+
+        for (int i = 0; i < estabelecimentoses.length; i++) {
+            Log.d("R4LL", "Nome: "+estabelecimentoses[i].getNome());
+            Log.d("R4LL", "Nome: "+estabelecimentoses[i].getCoord().getLat());
+            Log.d("R4LL", "Nome: "+estabelecimentoses[i].getCoord().getLon());
+
+        }
+        //Log.d("R4LL", estabelecimentoses[0].getNome()+"");
 
         //Log.d("R4LL", estabelecimentos[0].getNome());
         //Log.d("R4LL", estabelecimentos[0].getCoord().getLat()+"");

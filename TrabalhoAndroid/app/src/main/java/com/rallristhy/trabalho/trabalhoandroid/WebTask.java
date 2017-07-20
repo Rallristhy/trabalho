@@ -56,7 +56,7 @@ public class WebTask extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        //Log.d("teste", s);
+
         ((MapsActivity) (activity)).recebeJson(s);
 
         progressDialog.dismiss();
