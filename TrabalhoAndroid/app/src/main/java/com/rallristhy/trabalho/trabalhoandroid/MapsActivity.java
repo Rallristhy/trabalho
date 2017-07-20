@@ -11,7 +11,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.rallristhy.trabalho.trabalhoandroid.model.Estabelecimentos;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -26,16 +31,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        new WebTask(this).execute("https://raw.githubusercontent.com/Rallristhy/trabalho/master/estab.json");
+        new WebTask(this).execute("https://raw.githubusercontent.com/Rallristhy/trabalho/master/estab2.json");
     }
 
     public void recebeJson(String s){
         Gson gson = new Gson();
+        Log.d("R4LL", s);
 
-        Estabelecimentos estabelecimentos = gson.fromJson(s, Estabelecimentos.class);
-        Log.d("R4LL", estabelecimentos.getNome());
-        Log.d("R4LL", estabelecimentos.getCoord().getLat()+"");
-        Log.d("R4LL", estabelecimentos.getCoord().getLon()+"");
+        //Estabelecimentos e = gson.fromJson(s, Estabelecimentos.class);
+
+        Estabelecimentos[] arr = gson.fromJson(s, Estabelecimentos[].class);
+
+        //Log.d("R4LL", estabelecimentos[0].getNome());
+        //Log.d("R4LL", estabelecimentos[0].getCoord().getLat()+"");
+        //Log.d("R4LL", estabelecimentos[0].getCoord().getLon()+"");
     }
 
     @Override
