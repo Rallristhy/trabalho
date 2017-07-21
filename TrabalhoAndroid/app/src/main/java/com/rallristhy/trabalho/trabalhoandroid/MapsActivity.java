@@ -1,8 +1,13 @@
 package com.rallristhy.trabalho.trabalhoandroid;
 
+import android.content.Context;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -11,12 +16,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.rallristhy.trabalho.trabalhoandroid.model.Estabelecimentos;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -37,12 +37,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void recebeJson(String s){
         Gson gson = new Gson();
 
-        Estabelecimentos[] estabelecimentoses = gson.fromJson(s, Estabelecimentos[].class);
+        Estabelecimentos[] estabelecimentos = gson.fromJson(s, Estabelecimentos[].class);
 
-        for (int i = 0; i < estabelecimentoses.length; i++) {
-            Log.d("R4LL", "Nome: "+estabelecimentoses[i].getNome());
-            Log.d("R4LL", "Latitude: "+estabelecimentoses[i].getCoord().getLat());
-            Log.d("R4LL", "Longitude: "+estabelecimentoses[i].getCoord().getLon());
+        for (int i = 0; i < estabelecimentos.length; i++) {
+            Log.d("R4LL", "Nome: "+estabelecimentos[i].getNome());
+            Log.d("R4LL", "Latitude: "+estabelecimentos[i].getCoord().getLat());
+            Log.d("R4LL", "Longitude: "+estabelecimentos[i].getCoord().getLon());
             Log.d("R4LL", "");
 
         }
@@ -55,21 +55,33 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Add a marker in Sydney and move the camera
         LatLng tvmorena = new LatLng(-20.479415, -54.600827);
         LatLng padaria = new LatLng(-20.478790, -54.599307);
+        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID); //MAP_TYPE_NORMAL  MAP_TYPE_HYBRID MAP_TYPE_SATELLITE MAP_TYPE_TERRAIN
         mMap.addMarker(new MarkerOptions().position(padaria).title("Pão Moreno"));
         mMap.addMarker(new MarkerOptions().position(tvmorena).title("TV Morena"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(tvmorena));
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(padaria));
+
+        try{
+            LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+            LocationListener locationListener = new LocationListener() {
+                public void onLocationChanged(Location location) {
+                    LatLng latlng = new LatLng(location.getLatitude(), location.getLongitude());
+                    mMap.addMarker(new MarkerOptions().position(latlng).title("Marker in local position"));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latlng));
+                }
+
+                public void onStatusChanged(String provider, int status, Bundle extras) { }
+
+                public void onProviderEnabled(String provider) { }
+
+                public void onProviderDisabled(String provider) { }
+            };
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+
+        }catch(SecurityException ex){
+            Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
 
-    public void onMapReady(GoogleMap googleMap, String s) {
-        mMap = googleMap;
-
-        // Add a marker in Sydney and move the camera
-        LatLng tvmorena = new LatLng(-20.479415, -54.600827);
-        LatLng padaria = new LatLng(-20.478790, -54.599307);
-        mMap.addMarker(new MarkerOptions().position(padaria).title("Pão Moreno"));
-        mMap.addMarker(new MarkerOptions().position(tvmorena).title("TV Morena"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(tvmorena));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(padaria));
-    }
 }

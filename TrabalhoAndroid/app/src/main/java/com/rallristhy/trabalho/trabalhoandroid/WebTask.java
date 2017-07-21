@@ -3,6 +3,7 @@ package com.rallristhy.trabalho.trabalhoandroid;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.IOException;
 
@@ -56,7 +57,7 @@ public class WebTask extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-
+        //Log.d("teste", s);
         ((MapsActivity) (activity)).recebeJson(s);
 
         progressDialog.dismiss();
