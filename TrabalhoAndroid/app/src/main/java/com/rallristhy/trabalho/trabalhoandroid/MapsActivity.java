@@ -31,7 +31,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        new WebTask(this).execute("https://raw.githubusercontent.com/Rallristhy/trabalho/master/estab2.json");
     }
 
     public void recebeJson(String s){
@@ -45,43 +44,36 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Log.d("R4LL", "Longitude: "+estabelecimentos[i].getCoord().getLon());
             Log.d("R4LL", "");
 
+            LatLng x = new LatLng(estabelecimentos[i].getCoord().getLat(),estabelecimentos[i].getCoord().getLon());
+            mMap.addMarker(new MarkerOptions().position(x).title(estabelecimentos[i].getNome()));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(x));
         }
+
+        //LatLng tvmorena = new LatLng(-20.479415, -54.600827);
+        //LatLng padaria = new LatLng(-20.478790, -54.599307);
+
+        //mMap.addMarker(new MarkerOptions().position(padaria).title("Pão Moreno"));
+       // mMap.addMarker(new MarkerOptions().position(tvmorena).title("TV Morena"));
+       // mMap.moveCamera(CameraUpdateFactory.newLatLng(tvmorena));
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID); //MAP_TYPE_NORMAL  MAP_TYPE_HYBRID MAP_TYPE_SATELLITE MAP_TYPE_TERRAIN
+
+        new WebTask(this).execute("https://raw.githubusercontent.com/Rallristhy/trabalho/master/estab2.json");
 
         // Add a marker in Sydney and move the camera
-        LatLng tvmorena = new LatLng(-20.479415, -54.600827);
+        /*LatLng tvmorena = new LatLng(-20.479415, -54.600827);
         LatLng padaria = new LatLng(-20.478790, -54.599307);
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID); //MAP_TYPE_NORMAL  MAP_TYPE_HYBRID MAP_TYPE_SATELLITE MAP_TYPE_TERRAIN
         mMap.addMarker(new MarkerOptions().position(padaria).title("Pão Moreno"));
         mMap.addMarker(new MarkerOptions().position(tvmorena).title("TV Morena"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(tvmorena));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(tvmorena));*/
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(padaria));
 
-        try{
-            LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-            LocationListener locationListener = new LocationListener() {
-                public void onLocationChanged(Location location) {
-                    LatLng latlng = new LatLng(location.getLatitude(), location.getLongitude());
-                    mMap.addMarker(new MarkerOptions().position(latlng).title("Marker in local position"));
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latlng));
-                }
-
-                public void onStatusChanged(String provider, int status, Bundle extras) { }
-
-                public void onProviderEnabled(String provider) { }
-
-                public void onProviderDisabled(String provider) { }
-            };
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
-
-        }catch(SecurityException ex){
-            Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
-        }
     }
 
 }
