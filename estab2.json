@@ -26,5 +26,19 @@
       "numero": 1668,
       "cep": "79051-000"
     }
+  },
+  {
+    "id": "3",
+    "nome": "Estacio",
+    "coord": {
+      "lat": -20.480727,
+      "lon": -54.5991305
+    },
+    "end": {
+      "bairro": "Jardim TV Morena",
+      "rua": "R. Venâncio Borges do Nascimento",
+      "numero": 377,
+      "cep": "79050-700"
+    }
   }
 ]
