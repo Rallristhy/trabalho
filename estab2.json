@@ -4,8 +4,8 @@
     "tipo": "HUE_AZURE",
     "nome": "Comper Hiper Center Spipe",
     "coord": {
-      "lat": -20.496662128712654,
-      "lon": -54.6123518049717
+      "lat": -20.495292861703653,
+      "lon": -54.59778003394603
     },
     "end": {
       "bairro": "Jardim TV Morena",
@@ -19,8 +19,8 @@
     "tipo": "HUE_ORANGE",
     "nome": "Atacadão",
     "coord": {
-      "lat": -20.495292861703653,
-      "lon": -54.59778003394603
+      "lat": -20.496662128712654,
+      "lon": -54.6123518049717
     },
     "end": {
       "bairro": "Vila Progresso",
