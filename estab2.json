@@ -1,44 +1,32 @@
 [
   {
     "id": "1",
-    "nome": "TV Morena",
+    "tipo": "HUE_AZURE",
+    "nome": "Comper Hiper Center Spipe",
     "coord": {
-      "lat": -20.4791101,
-      "lon": -54.6028666
+      "lat": -20.4896478,
+      "lon": -54.6121977
     },
     "end": {
       "bairro": "Jardim TV Morena",
-      "rua": "Avenida Eduardo Elias Zahran",
-      "numero": 1600,
-      "cep": "79004-001"
+      "rua": "R. Spipe Calarge",
+      "numero": 1731,
+      "cep": "79051-560"
     }
   },
   {
-    "id": "2",
-    "nome": "Pão Moreno",
+    "id": "1",
+    "tipo": "HUE_ORANGE",
+    "nome": "Atacadão",
     "coord": {
-      "lat": -20.478790,
-      "lon": -54.599307
+      "lat": -20.5009524,
+      "lon": -54.6127198
     },
     "end": {
-      "bairro": "Jardim TV Morena",
-      "rua": "Avenida Eduardo Elias Zahran",
-      "numero": 1668,
-      "cep": "79051-000"
-    }
-  },
-  {
-    "id": "3",
-    "nome": "Estacio",
-    "coord": {
-      "lat": -20.480727,
-      "lon": -54.5991305
-    },
-    "end": {
-      "bairro": "Jardim TV Morena",
-      "rua": "R. Venâncio Borges do Nascimento",
-      "numero": 377,
-      "cep": "79050-700"
+      "bairro": "Vila Progresso",
+      "rua": "Av. Costa e Silva",
+      "numero": 1525,
+      "cep": "79050-010"
     }
   }
 ]
