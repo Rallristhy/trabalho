@@ -15,7 +15,7 @@
     }
   },
   {
-    "id": "1",
+    "id": "2",
     "tipo": "HUE_ORANGE",
     "nome": "Atacadão",
     "coord": {
@@ -27,6 +27,21 @@
       "rua": "Av. Costa e Silva",
       "numero": 1525,
       "cep": "79050-010"
+    }
+  },
+  {
+    "id": "3",
+    "tipo": "HUE_GREEN",
+    "nome": "Assaí Atacadista",
+    "coord": {
+      "lat": -20.4895892305492,
+      "lon": -54.62057378143072
+    },
+    "end": {
+      "bairro": "Vila Carvalho",
+      "rua": "Av. Fabio Zahran",
+      "numero": 7919,
+      "cep": "79005-571"
     }
   }
 ]
